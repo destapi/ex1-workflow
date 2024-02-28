@@ -1,0 +1,19 @@
+name: Deployment exercise 1
+on: push
+jobs:
+    # give the job an identifier, like in this case, it is 'deploy'
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Fetch project code
+              uses: actions/checkout@v3
+            - name: Install dependencies
+              run: npm ci
+            - name: Code Linting
+              run: npm run lint
+            - name: Execute tests
+              run: npm run test
+            - name: Build the project
+              run: npm run build
+            - name: Deploy code
+              run: echo "Deploying to remote serer..."
